@@ -26,7 +26,6 @@ function processJSON (root) {
             '<ul class="nav nav-tabs">' +
             '<li role="presentation" class="active"><a data-toggle="tab" href="#basicInfo' + i + '">Basic Info</a></li>' +
             '<li role="presentation"><a data-toggle="tab" href="#sellerInfo' + i + '">Seller Info</a></li>' +
-            '<li role="presentation"><a data-toggle="tab" href="#shipperInfo' + i + '">Shipper Info</a></li>' +
             '</ul>' +
             '<div class="tab-content">' +
             '<div id="basicInfo' + i + '" class="tab-pane fade in active">' +
@@ -36,10 +35,6 @@ function processJSON (root) {
             '<div id="sellerInfo' + i + '" class="tab-pane fade">' +
             '<h3>Seller Info</h3>' +
             '<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>' +
-            '</div>' +
-            '<div id="shipperInfo' + i + '" class="tab-pane fade">' +
-            '<h3>Shipper Info</h3>' +
-            '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>' +
             '</div>' +
             '</div>' +
             '</div>' +
@@ -52,6 +47,30 @@ function processJSON (root) {
 }
 function getTheResults(pageNumber)
 {
+    var keyWords = document.getElementById('inputKeyWord').value;
+    keyWords = keyWords.replace(/\s/g, '%20');
+
+    var sortBy = document.getElementById('inputSortBy');
+    var sortByText = sortBy.options[sortBy.selectedIndex].text;
+
+    var resultsPerPage = document.getElementById('inputResultsPerPage').value;
+    if(resultsPerPage == '')
+    {
+        resultsPerPage = 5;
+    }
+    var minPrice = document.getElementById('inputPriceFrom').value;
+    minPrice = minPrice.replace(/\s/g, '');
+    var maxPrice = document.getElementById('inputPriceTo').value;
+    maxPrice = maxPrice.replace(/\s/g, '');
+    if(minPrice == '')
+    {
+        minPrice = 0;
+    }
+    if(maxPrice == '')
+    {
+        maxPrice = 99999;
+    }
+
     var url = "http://svcs.ebay.com/services/search/FindingService/v1";
     url += "?OPERATION-NAME=findItemsAdvanced";
     url += "&SERVICE-VERSION=1.0.0";
@@ -60,10 +79,28 @@ function getTheResults(pageNumber)
     url += "&RESPONSE-DATA-FORMAT=JSON";
     url += "&callback=processJSON";
     url += "&REST-PAYLOAD";
-    url += "&categoryId=139973";
-    url += "&keywords=harry%20potter";
-    url += "&paginationInput.entriesPerPage=5";
+    //url += "&categoryId=139973";
+    url += "&keywords=" + keyWords;
+    url += "&paginationInput.entriesPerPage=" + resultsPerPage;
     url += "&paginationInput.pageNumber=" + pageNumber;
+    url += "&sortOrder=" + sortByText;
+    url += "&itemFilter(0).name=MinPrice";
+    url += "&itemFilter(0).value=" + minPrice;
+    url += "&itemFilter(0).paramName=Currency";
+    url += "&itemFilter(0).paramValue=USD";
+    url += "&itemFilter(1).name=MaxPrice";
+    url += "&itemFilter(1).value=" + maxPrice;
+    url += "&itemFilter(1).paramName=Currency";
+    url += "&itemFilter(1).paramValue=USD";
+
+    //itemFilter(0).name=MinPrice&
+    //itemFilter(0).value=11.00&
+    //itemFilter(0).paramName=Currency&
+    //itemFilter(0).paramValue=USD&
+    //itemFilter(1).name=MaxPrice&
+    //itemFilter(1).value=25.00&
+    //itemFilter(1).paramName=Currency&
+    //itemFilter(1).paramValue=USD&
 
     // Create a new script element
     var script_element = document.createElement('script');

@@ -41,61 +41,28 @@ RESPONSE-DATA-FORMAT=XML&keywords=harry%20potter&paginationInput.entriesPerPage=
         </div>
         <!--Third row of form-->
         <div class="form-group">
-            <label class="col-sm-4 control-label">Condition:</label>
-            <div class="col-sm-8">
-                <label style="font-weight: normal;"><input type="checkbox"> New</label>
-                <label style="font-weight: normal;"><input type="checkbox"> Used</label>
-                <label style="font-weight: normal;"><input type="checkbox"> Very Good</label>
-                <label style="font-weight: normal;"><input type="checkbox"> Good</label>
-                <label style="font-weight: normal;"><input type="checkbox"> Acceptable</label>
-            </div>
-        </div>
-        <!--Fourth row of form-->
-        <div class="form-group">
-            <label class="col-sm-4 control-label">Buying formats:</label>
-            <div class="col-sm-8">
-                <label style="font-weight: normal;"><input type="checkbox"> Buy It Now</label>
-                <label style="font-weight: normal;"><input type="checkbox"> Auction</label>
-                <label style="font-weight: normal;"><input type="checkbox"> Classified Ads</label>
-            </div>
-        </div>
-        <!--Fourth row of form-->
-        <div class="form-group">
-            <label class="col-sm-4 control-label">Seller:</label>
-            <div class="col-sm-8">
-                <label style="font-weight: normal;"><input type="checkbox"> Return Accepted</label>
-            </div>
-        </div>
-        <!--Fifth row of form-->
-        <div class="form-group">
-            <label class="col-sm-4 control-label">Shipping:</label>
-            <div class="col-sm-8">
-                <label style="font-weight: normal;"><input type="checkbox"> Free Shipping</label>
-                <label style="font-weight: normal;"><input type="checkbox"> Expedited Shipping</label>
-            </div>
-        </div>
-        <!--Sixth row of form-->
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-8">
-                <input type="number" class="form-control" id="inputHandlingTime" placeholder="Max Handling Time(days)">
-                <span class="error" id="errMaxDays" aria-live="polite"></span>
-            </div>
-        </div>
-        <!--Seventh row of form-->
-        <div class="form-group">
             <label for="inputSortBy" class="col-sm-4 control-label">Sort by:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputSortBy" placeholder="Best Match">
+                <select class="form-control" id="inputSortBy" placeholder="Best Match">
+                    <option>BestMatch</option>
+                    <option>CurrentPriceHighest</option>
+                    <option>DistanceNearest</option>
+                    <option>EndTimeSoonest</option>
+                    <option>PricePlusShippingHighest</option>
+                    <option>PricePlusShippingLowest</option>
+                    <option>StartTimeNewest</option>
+                </select>
             </div>
         </div>
-        <!--Eight row of form-->
+        <!--Fourth row of form-->
         <div class="form-group">
             <label for="inputResultsPerPage" class="col-sm-4 control-label">Results per page:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputResultsPerPage" placeholder="Results per page">
+                <input type="number" class="form-control" id="inputResultsPerPage" placeholder="Results per page">
+                <span class="error" id="errResultsPerPage" aria-live="polite"></span>
             </div>
         </div>
-        <!--Ninth row of form-->
+        <!--Fifth row of form-->
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-8 text-right">
                 <button class="btn">Clear</button>
