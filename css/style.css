@@ -1,0 +1,21 @@
+div.required label:after {
+    content: " *";
+    color: red;
+}
+/* This is the style of our error messages */
+.error {
+    width  : 100%;
+    padding: 0;
+
+    font-size: 80%;
+    color: white;
+    background-color: #ba3a57;
+    border-radius: 0 0 5px 5px;
+
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.error.active {
+    padding: 0.3em;
+}

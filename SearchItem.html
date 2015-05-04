@@ -1,0 +1,117 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <title>eBay Shopping</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![end if]-->
+</head>
+<body>
+<!--http://svcs.ebay.com/services/search/FindingService/v1?siteid=0&
+SECURITY-APPNAME=USCca6bc1-74c5-422d-a3af-abf0af4399e&
+OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&
+RESPONSE-DATA-FORMAT=XML&keywords=harry%20potter&paginationInput.entriesPerPage=
+5&sortOrder=%20PricePlusShippingLowest-->
+<div class="container">
+    <a href="http://www.ebay.com"><img src="images/ebaylogo.gif" alt="Go to eBay"></a>
+    <form class="form-horizontal" id="itemSearch" novalidate>
+        <!--First row of form-->
+        <div class="form-group required">
+            <label for="inputKeyWord" class="col-sm-4 control-label">Key words:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputKeyWord" placeholder="Enter keyword">
+                <span class="error" id="errKeyWord" aria-live="polite"></span>
+            </div>
+        </div>
+        <!--Second row of form-->
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Price range:</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="inputPriceFrom" placeholder="from ($)">
+                <span class="error" id="errPriceFrom" aria-live="polite"></span>
+            </div>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="inputPriceTo" placeholder="to ($)">
+                <span class="error" id="errPriceTo" aria-live="polite"></span>
+            </div>
+        </div>
+        <!--Third row of form-->
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Condition:</label>
+            <div class="col-sm-8">
+                <label style="font-weight: normal;"><input type="checkbox"> New</label>
+                <label style="font-weight: normal;"><input type="checkbox"> Used</label>
+                <label style="font-weight: normal;"><input type="checkbox"> Very Good</label>
+                <label style="font-weight: normal;"><input type="checkbox"> Good</label>
+                <label style="font-weight: normal;"><input type="checkbox"> Acceptable</label>
+            </div>
+        </div>
+        <!--Fourth row of form-->
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Buying formats:</label>
+            <div class="col-sm-8">
+                <label style="font-weight: normal;"><input type="checkbox"> Buy It Now</label>
+                <label style="font-weight: normal;"><input type="checkbox"> Auction</label>
+                <label style="font-weight: normal;"><input type="checkbox"> Classified Ads</label>
+            </div>
+        </div>
+        <!--Fourth row of form-->
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Seller:</label>
+            <div class="col-sm-8">
+                <label style="font-weight: normal;"><input type="checkbox"> Return Accepted</label>
+            </div>
+        </div>
+        <!--Fifth row of form-->
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Shipping:</label>
+            <div class="col-sm-8">
+                <label style="font-weight: normal;"><input type="checkbox"> Free Shipping</label>
+                <label style="font-weight: normal;"><input type="checkbox"> Expedited Shipping</label>
+            </div>
+        </div>
+        <!--Sixth row of form-->
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <input type="number" class="form-control" id="inputHandlingTime" placeholder="Max Handling Time(days)">
+                <span class="error" id="errMaxDays" aria-live="polite"></span>
+            </div>
+        </div>
+        <!--Seventh row of form-->
+        <div class="form-group">
+            <label for="inputSortBy" class="col-sm-4 control-label">Sort by:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputSortBy" placeholder="Best Match">
+            </div>
+        </div>
+        <!--Eight row of form-->
+        <div class="form-group">
+            <label for="inputResultsPerPage" class="col-sm-4 control-label">Results per page:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputResultsPerPage" placeholder="Results per page">
+            </div>
+        </div>
+        <!--Ninth row of form-->
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8 text-right">
+                <button class="btn">Clear</button>
+                <button type="submit" id="btnSearch" class="btn btn-default">Search</button>
+            </div>
+        </div>
+    </form>
+    <div id="results"></div>
+    <div id="pagination">
+        <ul class="pager">
+            <li id="previousPage" class="previous"><a href="#" onclick="goToPreviousPage();">Previous</a></li>
+            <li id="nextPage" class="next"><a href="#" onclick="goToNextPage();">Next</a></li>
+        </ul>
+    </div>
+</div>
+<script src="js/GetData.js"></script>
+<script src="js/Validation.js"></script>
+</body>
+</html>
