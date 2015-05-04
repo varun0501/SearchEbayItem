@@ -59,8 +59,24 @@ function processJSON(root) {
 
                 if (null != title && null != viewitem) {
                     html.push('<div class="media">' +
-                    '<a class="pull-left" href="#">' +
+                    '<a class="pull-left" href="#" data-toggle="modal" data-target="#myModal' + i + '">' +
                     '<img class="media-object" width="100" height="100" src="' + pic + '" alt="Media Object"></a>' +
+                    '<div id="myModal' + i + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                    '<div class="modal-dialog">' +
+                    '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                    '<h4 class="modal-title" id="myModalLabel">Image preview</h4>' +
+                    '</div>' +
+                    '<div class="modal-body">' +
+                    '<img src="' + pic + '" class="img-responsive" style="width: 500px; height: 500px;">' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
                     '<div class="media-body">' +
                     '<h4 class="media-heading"><a target="_blank" href="' + itemURL + '">' + title + '</a></h4>' +
                     '<h5 class="media-heading">Price: $' + price + '</h5>' +
@@ -74,19 +90,19 @@ function processJSON(root) {
                     '<div class="tab-content">' +
                     '<div id="basicInfo' + i + '" class="tab-pane fade in active">' +
                     '<table class="table">' +
-                    '<tr><td><strong>Category name</strong></td><td>' + category + '</td></tr>' +
-                    '<tr><td><strong>Condition</strong></td><td>' + condition + '</td></tr>' +
-                    '<tr><td><strong>Location</strong></td><td>' + location + '</td></tr>' +
+                    '<tr><td><strong>Category name</strong></td><td align="left">' + category + '</td></tr>' +
+                    '<tr><td><strong>Condition</strong></td><td align="left">' + condition + '</td></tr>' +
+                    '<tr><td><strong>Location</strong></td><td align="left">' + location + '</td></tr>' +
                     '</table>' +
                     '</div>' +
                     '<div id="shippingInfo' + i + '" class="tab-pane fade">' +
                     '<table class="table">' +
-                    '<tr><td><strong>Shipping type</strong></td><td>' + shippingType + '</td></tr>' +
-                    '<tr><td><strong>Handling time</strong></td><td>' + handlingTime + '</td></tr>' +
-                    '<tr><td><strong>Shipping locations</strong></td><td>' + shippingLocations + '</td></tr>' +
-                    '<tr><td><strong>Expedited shipping</strong></td><td>' + expShippingHTML + '</td></tr>' +
-                    '<tr><td><strong>One day shipping</strong></td><td>' + oneDayShippingHTML + '</td></tr>' +
-                    '<tr><td><strong>Returns accepted</strong></td><td>' + returnAcceptedHTML + '</td></tr>' +
+                    '<tr><td width="40%"><strong>Shipping type</strong></td><td align="left">' + shippingType + '</td></tr>' +
+                    '<tr><td width="40%"><strong>Handling time</strong></td><td align="left">' + handlingTime + '</td></tr>' +
+                    '<tr><td width="40%"><strong>Shipping locations</strong></td><td align="left">' + shippingLocations + '</td></tr>' +
+                    '<tr><td width="40%"><strong>Expedited shipping</strong></td><td align="left">' + expShippingHTML + '</td></tr>' +
+                    '<tr><td width="40%"><strong>One day shipping</strong></td><td align="left">' + oneDayShippingHTML + '</td></tr>' +
+                    '<tr><td width="40%"><strong>Returns accepted</strong></td><td align="left">' + returnAcceptedHTML + '</td></tr>' +
                     '</table>' +
                     '</div>' +
                     '</div>' +
