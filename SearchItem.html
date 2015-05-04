@@ -65,16 +65,16 @@ RESPONSE-DATA-FORMAT=XML&keywords=harry%20potter&paginationInput.entriesPerPage=
         <!--Fifth row of form-->
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-8 text-right">
-                <button class="btn">Clear</button>
+                <button type="reset" class="btn">Clear</button>
                 <button type="submit" id="btnSearch" class="btn btn-default">Search</button>
             </div>
         </div>
     </form>
     <div id="results"></div>
     <div id="pagination">
-        <ul class="pager">
-            <li id="previousPage" class="previous"><a href="#" onclick="goToPreviousPage();">Previous</a></li>
-            <li id="nextPage" class="next"><a href="#" onclick="goToNextPage();">Next</a></li>
+        <ul class="pager" id="navigatePage">
+            <li id="previousPage" class="previous"><a href="#" onclick="goToPreviousPage(); return false;">Previous</a></li>
+            <li id="nextPage" class="next"><a href="#" onclick="goToNextPage(); return false;">Next</a></li>
         </ul>
     </div>
 </div>
